@@ -11,10 +11,10 @@ class ManufacturersController <ApplicationController
     @manufacturer = Manufacturer.new(manufacturer_params)
     if @manufacturer.save
       flash[:accepted] = "New manufacturer added."
-      redirect_to manufacturers_path(@manufacturers)
+      redirect_to manufacturers_path
     else
       flash[:errors] = @manufacturer.errors.full_messages.join(". ")
-      redirect_to new_manufacturer_path(@manufacturers)
+      render :new
     end
   end
 

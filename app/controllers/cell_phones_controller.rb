@@ -12,10 +12,10 @@ class CellPhonesController <ApplicationController
 
     if @cell_phone.save
       flash[:accepted] = "New cell phone added."
-      redirect_to cell_phones_path(@cell_phones)
+      redirect_to cell_phones_path
     else
       flash[:errors] = @cell_phone.errors.full_messages.join(". ")
-      redirect_to new_cell_phone_path(@cell_phones)
+      render :new
     end
 	end
 

@@ -37,7 +37,7 @@ feature 'user adds manufacturer', %Q{
       expect(page).to have_content("Country can't be blank")
       expect(page).to_not have_content('Nokia')
 
-      expect(new_manufacturer_path(@manufacturer)).to eq(current_path)
+      expect(manufacturers_path).to eq(current_path)
     end
   end
 end
