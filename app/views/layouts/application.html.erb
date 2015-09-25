@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ScPracticeExample</title>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <nav class="top-bar">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="/">ScPracticeExample</a></h1>
+      </li>
+    </ul>
+
+    <section class="top-bar-section">
+      <ul class="right">
+        <%- if current_user -%>
+          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+        <%- else -%>
+          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <li><%= link_to 'Sign In', new_user_session_path %></li>
+        <%- end -%>
+      </ul>
+    </section>
+  </nav>
+
+  <%- flash.each do |key, value| -%>
+    <div class="flash flash-<%= key %>">
+      <%= value %>
+    </div>
+  <%- end -%>
+  <%= link_to "/manufacturers", manufacturers_path(@manufacturer) %>
+<br>
+  <%= link_to "/manufacturers/new", new_manufacturer_path(@manufacturer) %>
+<br>
+  <%= link_to "/cell_phones", cell_phones_path(@cell_phone) %>
+<br>
+  <%= link_to "/cell_phones/new", new_cell_phone_path(@cell_phone) %>
+
+  <%= yield %>
+
+  <%= javascript_include_tag 'application' %>
+  <%= yield :extra_footer %>
+</body>
+</html>
