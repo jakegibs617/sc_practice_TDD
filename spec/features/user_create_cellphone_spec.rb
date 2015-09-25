@@ -35,7 +35,8 @@ feature 'user adds cellphone', %Q{
       expect(page).to have_content('New cell phone added')
       expect(page).to have_content('Nokia')
 
-      expect(cell_phones_path(@cell_phone)).to eq(current_path)
+      expect(current_path).to eq(cell_phones_path(@cell_phone))
+
     end
 
     scenario 'entry is invalid' do
@@ -47,7 +48,7 @@ feature 'user adds cellphone', %Q{
       expect(page).to have_content("Battery life can't be blank")
       expect(page).to_not have_content('Nokia')
 
-      expect(cell_phones_path).to eq(current_path)
+      expect(current_path).to eq(cell_phones_path)
     end
 
     scenario 'optionally specify description' do
